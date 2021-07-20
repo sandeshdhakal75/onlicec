@@ -1,0 +1,91 @@
+{% extends 'base/master.html' %}
+{% load static %}
+{% block 'body' %}
+   <h2 style="text-align:center;"> Thank you for registering your complaint ! </h2>
+<div class="container">
+   <div class="row">
+      <div class="col-md-3">
+         <div class="box">
+
+             <h5> {{public.full_name}}    &nbsp; &nbsp;  <a href="#"data-toggle="modal" data-target="#edit_name" ><i class="fa fa-pencil"> </i></a> </h5>
+             <span>  <i class="fa fa-map-marker ">{{public.crime_location}}</i> &nbsp; &nbsp;  <a href="#"data-toggle="modal" data-target="#edit_location" ><i class="fa fa-pencil"> </i></a>  </span>
+           <br>
+             <i class="fa fa-mobile"> {{public.contact_number}} </i>
+            </p>
+            {% if jobseeker.gender == 'male' %}
+              <i class="fa fa-mars-stroke "> </i> {{public.gender}}
+            {% elif jobseeker.gender == 'female' %}
+               <i class="fa fa-venus"> </i> {{public.gender}}
+            {% else %}
+                <i class="fa fa-venus-mars "> </i> {{public.gender}}
+            {% endif %}
+            <i class="fa fa-date"> </i> {{public.date_of_crime}}
+             <br>
+               <i class="fa fa-time"> </i> {{public.time_of_crime}}
+            </p>
+
+
+         </div>
+
+      </div>
+
+
+
+              <div class = col-md-8>
+              <div class="box">
+              <h5> Evidence/Photo </h5>
+                  <img src="{{MEDIA_URL}}{{public.evidence.url}}" class = "evidence" style="height:300px;,width:auto:">
+               <hr/>
+                  <h6> Description </h6>
+              <p> {{public.complain_description}}</p>
+              </div>
+              <hr/>
+
+      <!-- Modal -->
+<div class="modal fade" id="create_project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       < method="POST" action="{% url 'jobseekerdash' %}">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add evidence</h4>
+      </div>
+      <div class="modal-body">
+
+
+         {{form}}
+          {% csrf_token %}
+
+      </div>
+       <div>
+      <form class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+
+     </form>
+    </div>
+  </div>
+</div>
+              </div></div></div>
+
+<h5 style="text-align:center;">  Your FIR has been registered to  {{public.crime_location }},  police station </h5>
+       <h6 style="text-align:center;"> you can visit {{public.crime_location}} police station for further process also you can see update on your FIR by clicking the view button .</h6>
+
+<div class="container">
+    <div class="col-md-5">
+        <div class="box">
+         <a href="{% url 'report_list' %}" class="btn btn-success"> Update on my report </a>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

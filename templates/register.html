@@ -1,0 +1,13 @@
+{% extends 'base/master.html' %}
+
+{% block 'body' %}
+
+<div class="container" style="...">
+   <div class="col-md-8 col-mid-offset-4">
+
+      <a href="{% url 'department_register' %}" class="btn btn-primary"> Register as Department </a>
+      <a href="{% url 'signup' %}" class="btn btn-success"> Register as Public </a>
+   </div>
+</div>
+
+{% endblock %}

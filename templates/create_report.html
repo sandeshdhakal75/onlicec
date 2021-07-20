@@ -1,0 +1,15 @@
+{% extends 'base/master.html' %}
+
+{% block 'body' %}
+
+<div class="container" style="padding:5%;">
+   <div class="col-md-8 col-mid-offset-2">
+     <form method="POST" action="{% url 'report_create' %}">
+       {{form}}
+       {% csrf_token %}
+         <button type="submit" class="btn btn-primary"> save </button>
+         </form>
+   </div>
+</div>
+
+{% endblock %}

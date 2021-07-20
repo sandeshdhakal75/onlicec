@@ -1,0 +1,14 @@
+{% extends 'base/master.html' %}
+
+{% block 'body' %}
+
+<div class="container" style="padding:5%;">
+   <div class="col-md-4 col-mid-offset-4">
+   <h3> who are you  </h3>
+
+      <a href="{% url 'create_public' %}" class="btn btn-primary"> i am public </a>
+      <a href="{% url 'create_department' %}" class="btn btn-success"> i am department </a>
+   </div>
+</div>
+
+{% endblock %}

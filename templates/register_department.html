@@ -1,0 +1,40 @@
+{% extends 'base/master.html' %}
+
+{% block 'body' %}
+
+<!-- Page Heading -->
+			<section class="page-heading">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1>Register as Department </h1>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Page Heading / End -->
+
+			<!-- Page Content -->
+			<section class="page-content">
+				<div class="container">
+
+
+						<div class="col-md-6">
+							<div class="spacer-lg visible-sm visible-xs"></div>
+							<div class="box">
+								<h3>Register</h3>
+								<form action="{% url 'register_company' %}" method="POST" role="form">
+                                     {{form}}
+
+									{% csrf_token %}
+									<button type="submit" class="btn btn-primary">Register</button>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+			<!-- Page Content / End -->
+
+{% endblock %}

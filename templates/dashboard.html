@@ -1,0 +1,85 @@
+{% extends 'base/master.html' %}
+{% load static %}
+{% block 'body' %}
+
+<div class="container">
+
+   <div class="col-md-4">
+    <div class="box">
+      <h4> {{c.name}}</h4>
+        <h6> {{c.depart_name}}</h6>
+      <p>
+         <span> <i class="fa fa-map-marker"> {{c.address}}</i> </span></br>
+         <span> <i class="fa fa-globe"> <a href="#"> {{c.website}}</a></i> </span></br>
+         <span> <i class="fa fa-phone"> {{c.contact}}</i> </span>
+      </p>
+
+   </div>
+
+   </div>
+   <div class="col-md-8">
+      <a href="{% url 'report_create' %}" class="btn btn-info"> Add progress </a>
+      <a href="{% url 'report_list' %}" class="btn btn-success"> View Reports </a>
+
+      <hr>
+      <div class="box">
+    <h6>
+       About Department </h6>
+      {{c.description}}
+   </div>
+</div>
+</div>
+
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		<h5>REPORTS:</h5>
+		<hr>
+		<div class="card card-body">
+
+
+			<table class="table table-sm">
+				<tr>
+					<th>Full Name</th>
+					<th>Location</th>
+					<th>Phone</th>
+                    <th>Date</th>
+                    <th>Time</th>
+				</tr>
+
+
+
+                      <tr>
+
+						<td>{{p.full_name}}</td>
+						<td>{{p.crime_location}}</td>
+                        <td>{{p.contact_number}}</td>
+                        <td>{{p.date_of_crime}}</td>
+                        <td>{{p.time_of_crime}}</td>
+					</tr>
+
+			</table>
+		</div>
+	</div>
+</div>
+
+    <hr>
+<div class="container" >
+      <div class = col-md-8 style="height:300px; width;auto">
+              <div class="box">
+              <h5> Evidence/Photo </h5>
+                  <img src="{{MEDIA_URL}}{{p.evidence.url}}" class = "evidence" style="height 300px; width:auto;">
+               <hr/>
+                  <h6> Description </h6>
+              <p> {{p.complain_description}}</p>
+              </div>
+              <hr/>
+</div>
+
+
+
+
+</div>
+
+
+{% endblock %}

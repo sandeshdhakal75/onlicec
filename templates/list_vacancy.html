@@ -1,0 +1,30 @@
+{% extends 'base/master.html' %}
+
+{% block 'body' %}
+
+<div class="container">
+    <div class="col md-8 col-md-offset-2">
+        <h4> All vacancies </h4>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            {% for j in job %}
+                     <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree{{j.id}}" aria-expanded="false" aria-controls="collapseThree">
+        {{j.title}}
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree{{j.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body"> {{j.description}}
+      </div>
+
+    </div>
+  </div>
+
+            {% endfor %}
+            </div>
+   </div>
+</div>
+
+{% endblock %}
